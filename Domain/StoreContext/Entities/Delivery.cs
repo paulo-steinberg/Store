@@ -18,5 +18,14 @@ namespace Domain.StoreContext.Entities
         public DateTime DeliveryDate { get; private set; }
         public EDeliveryStatus Status { get; private set; }
 
+        public void Ship()
+        {
+            Status = EDeliveryStatus.Shipped;
+        }
+
+        public void Cancel()
+        {
+            Status = EDeliveryStatus.Canceled;
+        }
     }
 }

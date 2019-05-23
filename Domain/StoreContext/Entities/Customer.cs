@@ -1,17 +1,20 @@
 ﻿using Domain.StoreContext.ValueObjects;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain.StoreContext.Entities
 {
     public class Customer
     {
+        private IList<Address> _addresses;
+
         public Customer(Name name, Email email, Document document, string phone)
         {
             Name = name;
             Document = document;
             Email = email;
             Phone = phone;
-            Addresses = new List<Address>();
+            _addresses = new List<Address>();
         }
 
 
@@ -20,7 +23,12 @@ namespace Domain.StoreContext.Entities
 
         public Email Email { get; private set; }
         public string Phone { get; private set; }
-        public IReadOnlyCollection<Address> Addresses { get; private set; }
+        public IReadOnlyCollection<Address> Addresses => _addresses.ToArray();
+
+        public void AddAdress(Address address)
+        {
+            _addresses.Add(address);
+        }
 
         public override string ToString()
         {
