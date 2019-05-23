@@ -22,5 +22,10 @@ namespace Domain.StoreContext.Entities
         {
             Status = EDeliveryStatus.Shipped;
         }
+
+        public void Cancel()
+        {
+            Status = EDeliveryStatus.Canceled;
+        }
     }
 }
