@@ -41,10 +41,13 @@ namespace Domain.StoreContext.Entities
            
         }
 
-        public void AddItem(OrderItem item)
-        {
-            //Valida Item
-            //Adiciona ao pedido
+
+        public void AddItem(Product product, decimal quantity)
+        { 
+            if (quantity > product.QuantityOnHand)
+                AddNotification("OrderItem", $"Produto {product.Title} não tem {quantity} itens em estoque.");
+
+            var item = new OrderItem(product, quantity);
             _items.Add(item);
         }
 
