@@ -1,8 +1,9 @@
 ﻿using Domain.StoreContext.Enums;
+using FluentValidator;
 
 namespace Domain.StoreContext.ValueObjects
 {
-    public class Address
+    public class Address : Notifiable
     {
         public Address(
             string street,

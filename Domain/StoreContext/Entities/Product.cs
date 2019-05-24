@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FluentValidator;
 
 namespace Domain.StoreContext.Entities
 {
-    public class Product
+    public class Product : Notifiable
     {
         public Product(string title, string description, string image, decimal price, decimal quantity)
         {

@@ -2,6 +2,7 @@ using System;
 using System.Runtime.InteropServices.ComTypes;
 using Domain.StoreContext.Entities;
 using Domain.StoreContext.ValueObjects;
+using FluentAssertions;
 using Xunit;
 
 namespace Tests
@@ -22,15 +23,16 @@ namespace Tests
             var cadeira = new Product("Cadeira", "Cadeira ué", "image.png", 559.15M, 10);
 
             var order = new Order(customer);
-            order.AddItem(new OrderItem(mouse, 5));
-            order.AddItem(new OrderItem(teclado, 5));
-            order.AddItem(new OrderItem(cadeira, 5));
-            order.AddItem(new OrderItem(impressora, 5));
+            //order.AddItem(new OrderItem(mouse, 5));
+            //order.AddItem(new OrderItem(teclado, 5));
+            //order.AddItem(new OrderItem(cadeira, 5));
+            //order.AddItem(new OrderItem(impressora, 5));
 
             order.Place();
-            order.Pay();
-            order.Ship();
-            order.Cancel();
+            order.IsValid.Should().BeFalse();
+            //order.Pay();
+            //order.Ship();
+            //order.Cancel();
 
         }
     }

@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FluentValidator;
+using FluentValidator.Validation;
 
 namespace Domain.StoreContext.ValueObjects
 {
-    public class Name
+    public class Name : Notifiable
     {
         public Name(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;
+
+            AddNotifications(new ValidationContract()
+                .Requires()
+                .HasMinLen(FirstName, 3, "First Name", "O nome deve conter pelo menos 3 caracteres")
+                .HasMaxLen(FirstName, 40, "First Name", "O nome deve conter no máximo 40 caracteres")
+                .HasMinLen(LastName, 3, "Last Name", "O sobrenome deve conter pelo menos 3 caracteres")
+                .HasMaxLen(LastName, 40, "Last Name", "O sobrenome deve conter no máximo 40 caracteres")
+                );
         }
 
         public string FirstName { get; private set; }
