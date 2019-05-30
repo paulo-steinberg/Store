@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentValidator;
+using Shared.Entities;
 
 namespace Domain.StoreContext.Entities
 {
-    public class Customer : Notifiable
+    public class Customer : Entity
     {
         private IList<Address> _addresses;
 

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using Domain.StoreContext.Enums;
 using FluentValidator;
+using Shared.Entities;
 
 namespace Domain.StoreContext.Entities
 {
-    public class Order : Notifiable
+    public class Order : Entity
     {
         private readonly IList<OrderItem> _items;
         private readonly IList<Delivery> _deliveries;

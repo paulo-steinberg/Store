@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using Domain.StoreContext.Enums;
+using Shared.Entities;
 
 namespace Domain.StoreContext.Entities
 {
-    public class Delivery
+    public class Delivery : Entity
     {
         public Delivery(DateTime estimateDeliveryDate)
         {
