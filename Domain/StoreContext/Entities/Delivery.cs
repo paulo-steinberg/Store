@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Domain.StoreContext.Enums;
 using Shared.Entities;
 

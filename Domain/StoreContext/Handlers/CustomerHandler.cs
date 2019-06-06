@@ -1,5 +1,4 @@
-﻿using System;
-using Domain.StoreContext.Commands.Customer.Inputs;
+﻿using Domain.StoreContext.Commands.Customer.Inputs;
 using Domain.StoreContext.Commands.Customer.Outputs;
 using Domain.StoreContext.Entities;
 using Domain.StoreContext.Repositories;

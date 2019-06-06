@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Domain.StoreContext.Entities;
+﻿using Domain.StoreContext.Entities;
 using Domain.StoreContext.Enums;
 using Domain.StoreContext.ValueObjects;
 using FluentAssertions;

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FluentValidator;
+﻿using FluentValidator;
 using FluentValidator.Validation;
 
 namespace Domain.StoreContext.ValueObjects

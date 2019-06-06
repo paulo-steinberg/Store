@@ -1,5 +1,4 @@
 ﻿using Domain.StoreContext.Enums;
-using FluentValidator;
 using Shared.Entities;
 
 namespace Domain.StoreContext.ValueObjects
