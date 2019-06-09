@@ -1,7 +1,6 @@
 ﻿using Domain.StoreContext.ValueObjects;
 using System.Collections.Generic;
 using System.Linq;
-using FluentValidator;
 using Shared.Entities;
 
 namespace Domain.StoreContext.Entities

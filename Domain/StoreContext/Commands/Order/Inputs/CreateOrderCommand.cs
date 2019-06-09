@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Domain.StoreContext.ValueObjects;
 using FluentValidator;
 using FluentValidator.Validation;
 using Shared.Commands;

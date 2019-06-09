@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FluentValidator;
-using Shared.Entities;
+﻿using Shared.Entities;
 
 namespace Domain.StoreContext.Entities
 {
