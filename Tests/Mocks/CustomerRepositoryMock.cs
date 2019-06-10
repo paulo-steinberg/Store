@@ -1,4 +1,5 @@
 ﻿using Domain.StoreContext.Entities;
+using Domain.StoreContext.Queries;
 using Domain.StoreContext.Repositories;
 
 namespace Tests.Mocks
@@ -13,6 +14,11 @@ namespace Tests.Mocks
         public bool CheckEmail(string email)
         {
             return false;
+        }
+
+        public CustomerOrdersCount GetCustomerOrdersCount(string document)
+        {
+            return new CustomerOrdersCount() { };
         }
 
         public void Save(Customer customer)
