@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using Domain.StoreContext.Entities;
+using Domain.StoreContext.Queries;
+using Domain.StoreContext.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controller
 {
     public class CustomerController : Microsoft.AspNetCore.Mvc.Controller
     {
-        [HttpGet]
-        public List<Customer> Get()
+        private readonly  ICustomerRepository _repository;
+
+        public CustomerController(ICustomerRepository repository)
         {
-            return null;
+            _repository = repository;
+        }
+
+        [HttpGet]
+        public IEnumerable<ListCustomerQueryResult> Get()
+        {
+            return _repository.Get();
         }
 
         [HttpGet]

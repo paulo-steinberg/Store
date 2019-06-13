@@ -1,4 +1,5 @@
-﻿using Domain.StoreContext.Entities;
+﻿using System.Collections.Generic;
+using Domain.StoreContext.Entities;
 using Domain.StoreContext.Queries;
 using Domain.StoreContext.Repositories;
 
@@ -19,6 +20,11 @@ namespace Tests.Mocks
         public CustomerOrdersCount GetCustomerOrdersCount(string document)
         {
             return new CustomerOrdersCount() { };
+        }
+
+        public IEnumerable<ListCustomerQueryResult> Get()
+        {
+            return new List<ListCustomerQueryResult>();
         }
 
         public void Save(Customer customer)

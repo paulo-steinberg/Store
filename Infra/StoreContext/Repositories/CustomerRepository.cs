@@ -1,16 +1,15 @@
-﻿using Dapper;
+﻿using System.Collections.Generic;
+using Dapper;
 using System.Linq;
-using System.Data.SqlClient;
 using System.Data;
 using Domain.StoreContext.Entities;
 using Domain.StoreContext.Repositories;
 using Infra.StoreContext.DataContexts;
-using System;
 using Domain.StoreContext.Queries;
 
 namespace Infra.StoreContext.Repositories
 {
-    class CustomerRepository : ICustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly DataContext _context;
 
@@ -50,6 +49,15 @@ namespace Infra.StoreContext.Repositories
                 new { Document = document },
                 commandType: CommandType.StoredProcedure)
                 .FirstOrDefault();
+        }
+
+        public IEnumerable<ListCustomerQueryResult> Get()
+        {
+            return _context
+                .Connection
+                .Query<ListCustomerQueryResult>(
+                    "SELECT [Id], CONCAT([FirstName], ' ', [LastName], [Document], [Email] FROM [Customer]",
+                    new { });
         }
 
         public void Save(Customer customer)
