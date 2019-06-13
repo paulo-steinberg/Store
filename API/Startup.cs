@@ -1,4 +1,5 @@
-﻿using Domain.StoreContext.Repositories;
+﻿using Domain.StoreContext.Handlers;
+using Domain.StoreContext.Repositories;
 using Domain.StoreContext.Services;
 using Infra.StoreContext.DataContexts;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +19,7 @@ namespace API
             services.AddMvc();
 
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<CustomerHandler, CustomerHandler>();
             services.AddTransient<IEmailService, EmailService>();
 
             services.AddScoped<DataContext, DataContext>();

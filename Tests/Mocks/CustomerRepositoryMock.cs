@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Domain.StoreContext.Entities;
 using Domain.StoreContext.Queries;
 using Domain.StoreContext.Repositories;
@@ -24,7 +25,23 @@ namespace Tests.Mocks
 
         public IEnumerable<ListCustomerQueryResult> Get()
         {
-            return new List<ListCustomerQueryResult>();
+            throw new NotImplementedException();
+        }
+
+
+        public GetCustomerQueryResult GetCustomerById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GetCustomerQueryResult Get(Guid id)
+        {
+            throw new NotImplementedException();
         }
 
         public void Save(Customer customer)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Dapper;
 using System.Linq;
 using System.Data;
@@ -56,8 +57,27 @@ namespace Infra.StoreContext.Repositories
             return _context
                 .Connection
                 .Query<ListCustomerQueryResult>(
-                    "SELECT [Id], CONCAT([FirstName], ' ', [LastName], [Document], [Email] FROM [Customer]",
+                    "SELECT [Id], CONCAT([FirstName], ' ', [LastName]) AS [Name], [Document], [Email] FROM [Customer]",
                     new { });
+        }
+
+        public GetCustomerQueryResult GetCustomerById(Guid id)
+        {
+            return _context
+                .Connection
+                .Query<GetCustomerQueryResult>(
+                    "SELECT [Id], CONCAT([FirstName], ' ', [LastName]) AS [Name], [Document], [Email] FROM [Customer] WHERE [Id]= @id",
+                    new { Id = id })
+                .FirstOrDefault();
+        }
+
+        public IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid id)
+        {
+            return _context
+                .Connection
+                .Query<ListCustomerOrdersQueryResult>(
+                    "SELECT [Id], CONCAT([FirstName], ' ', [LastName]) AS [Name], [Document], [Email] FROM [Customer] WHERE [Id]= @id",
+                    new { Id = id });
         }
 
         public void Save(Customer customer)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Domain.StoreContext.Entities;
 using Domain.StoreContext.Queries;
 
@@ -11,5 +12,8 @@ namespace Domain.StoreContext.Repositories
         void Save(Customer customer);
         CustomerOrdersCount GetCustomerOrdersCount(string document);
         IEnumerable<ListCustomerQueryResult> Get();
+        GetCustomerQueryResult GetCustomerById(Guid id);
+
+        IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid id);
     }
 }

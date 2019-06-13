@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Domain.StoreContext.Commands.Customer.Inputs;
+using Domain.StoreContext.Commands.Customer.Outputs;
 using Domain.StoreContext.Entities;
+using Domain.StoreContext.Handlers;
 using Domain.StoreContext.Queries;
 using Domain.StoreContext.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +13,12 @@ namespace API.Controller
     public class CustomerController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly  ICustomerRepository _repository;
+        private readonly CustomerHandler _handler;
 
-        public CustomerController(ICustomerRepository repository)
+        public CustomerController(ICustomerRepository repository, CustomerHandler handler)
         {
             _repository = repository;
+            _handler = handler;
         }
 
         [HttpGet]
@@ -24,24 +29,35 @@ namespace API.Controller
 
         [HttpGet]
         [Route("customers/{id}")]
-        public Customer GetById(Guid id)
+        public GetCustomerQueryResult GetById(Guid id)
         {
-            return null;
+            return _repository.GetCustomerById(id);
         }
 
         [HttpGet]
         [Route("customers/{id}/orders")]
-        public List<Order> GetOrders(Guid id)
+        public IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid id)
         {
-            return null;
+            return _repository.GetOrders(id);
         }
 
         [HttpPost]
         [Route("customers")]
-        public Customer Post([FromBody]Customer customer)
+        public object Post([FromBody]CreateCustomerCommand command)
         {
-            return null;
+            var result = (CreateCustomerCommandResult) _handler.Handle(command);
+
+            if (_handler.Invalid)
+                return BadRequest(_handler.Notifications);
+
+            return result;
         }
+
+        /*
+         TODO
+            Create Update Customer Handler.
+            Create Delete Customer Handler.
+        */
 
         [HttpPut]
         [Route("customers/{id}")]
