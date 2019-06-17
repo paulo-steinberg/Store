@@ -28,21 +28,21 @@ namespace API.Controller
         }
 
         [HttpGet]
-        [Route("customers/{id}")]
+        [Route("v1/customers/{id}")]
         public GetCustomerQueryResult GetById(Guid id)
         {
             return _repository.GetCustomerById(id);
         }
 
         [HttpGet]
-        [Route("customers/{id}/orders")]
+        [Route("v1/customers/{id}/orders")]
         public IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid id)
         {
             return _repository.GetOrders(id);
         }
 
         [HttpPost]
-        [Route("customers")]
+        [Route("v1/customers")]
         public object Post([FromBody]CreateCustomerCommand command)
         {
             var result = (CreateCustomerCommandResult) _handler.Handle(command);
@@ -60,14 +60,14 @@ namespace API.Controller
         */
 
         [HttpPut]
-        [Route("customers/{id}")]
+        [Route("v1/customers/{id}")]
         public Customer Put([FromBody]Customer customer)
         {
             return null;
         }
 
         [HttpDelete]
-        [Route("customers/{id}")]
+        [Route("v1/customers/{id}")]
         public Customer Delete()
         {
             return null;
