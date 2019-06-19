@@ -17,6 +17,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddResponseCompression();
 
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<CustomerHandler, CustomerHandler>();
@@ -34,6 +35,7 @@ namespace API
             }
 
             app.UseMvc();
+            app.UseResponseCompression();
         }
     }
 }

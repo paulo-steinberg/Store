@@ -44,14 +44,14 @@ namespace API.Controller
         [HttpPost]
         [Route("v1/customers")]
         [ResponseCache(Duration = 60)]
-        public object Post([FromBody]CreateCustomerCommand command)
+        public IActionResult Post([FromBody]CreateCustomerCommand command)
         {
             var result = (CreateCustomerCommandResult) _handler.Handle(command);
 
             if (_handler.Invalid)
                 return BadRequest(_handler.Notifications);
 
-            return result;
+            return Ok(result);
         }
 
         /*
