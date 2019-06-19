@@ -1,4 +1,6 @@
-﻿using Domain.StoreContext.Entities;
+﻿using System;
+using System.Collections.Generic;
+using Domain.StoreContext.Entities;
 using Domain.StoreContext.Queries;
 
 namespace Domain.StoreContext.Repositories
@@ -9,5 +11,9 @@ namespace Domain.StoreContext.Repositories
         bool CheckEmail(string email);
         void Save(Customer customer);
         CustomerOrdersCount GetCustomerOrdersCount(string document);
+        IEnumerable<ListCustomerQueryResult> Get();
+        GetCustomerQueryResult GetCustomerById(Guid id);
+
+        IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid id);
     }
 }
