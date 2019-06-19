@@ -1,2 +1,7 @@
 # Store
-Creating a Store using .Net Core 2.0 + Dapper
+Creating a sample store using .Net Core 2.1, SQL + Dapper.
+
+Instructions:
+dotnet restore.
+dotnet build.
+dotnet run.
