@@ -43,6 +43,7 @@ namespace API.Controller
 
         [HttpPost]
         [Route("v1/customers")]
+        [ResponseCache(Duration = 60)]
         public object Post([FromBody]CreateCustomerCommand command)
         {
             var result = (CreateCustomerCommandResult) _handler.Handle(command);
@@ -61,6 +62,7 @@ namespace API.Controller
 
         [HttpPut]
         [Route("v1/customers/{id}")]
+        [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 60)]
         public Customer Put([FromBody]Customer customer)
         {
             return null;
