@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Domain.StoreContext.Handlers;
 using Domain.StoreContext.Repositories;
 using Domain.StoreContext.Services;
@@ -9,16 +10,25 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Infra.StoreContext.Repositories;
 using Infra.StoreContext.Services;
+using Microsoft.Extensions.Configuration;
+using Shared;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace API
 {
     public class Startup
     {
+        public static IConfiguration Configuration;
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appSettings.json");
+
+            Configuration = builder.Build();
+
             services.AddMvc();
             services.AddResponseCompression();
 
